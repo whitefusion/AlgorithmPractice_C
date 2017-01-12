@@ -3,7 +3,8 @@
 
 using namespace std;
 
-class NumArray {
+// My own solution
+/*class NumArray {
     vector<int> increSum;
 public:
     NumArray(vector<int> &nums) {
@@ -17,6 +18,23 @@ public:
     int sumRange(int i, int j) {
         return i == 0 ? increSum[j] : increSum[j] - increSum[i - 1];
     }
+};*/
+
+// A faster solution.
+class NumArray {
+public:
+    NumArray(vector<int> &nums) {
+        increSum.push_back(0);
+        for(auto n: nums)
+            increSum.push_back(increSum.back()+n);
+
+    }
+
+    int sumRange(int i, int j) {
+        return increSum[j+1] - increSum[i];
+    }
+private:
+    vector<int> increSum;
 };
 
 int main() {
