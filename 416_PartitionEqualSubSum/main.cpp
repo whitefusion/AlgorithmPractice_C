@@ -10,9 +10,11 @@ public:
         if (sum & 1) return false;
         vector<int> dp(target + 1, 0);
         dp[0] = 1;
-        for(int num : nums)
-            for(int i = target; i >= num; i--)
+        for(int num : nums) {
+            for (int i = target; i >= num; i--)
                 dp[i] = dp[i] || dp[i - num];
+            if (dp[target]) break;
+        }
         return dp[target];
     }
 };
