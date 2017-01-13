@@ -2,7 +2,7 @@
 #include <vector>
 #include <numeric>
 using namespace std;
-
+// https://discuss.leetcode.com/topic/67539/0-1-knapsack-detailed-explanation
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
