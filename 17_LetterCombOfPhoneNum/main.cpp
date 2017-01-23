@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution {
+/*class Solution {
 public:
     vector<string> dict = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     vector<string> letterCombinations(string digits) {
@@ -27,10 +27,39 @@ public:
         }
         return result;
     }
+};*/
+
+class Solution {
+private:
+    vector<string> dict = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+public:
+    vector<string> letterCombinations(string digits);
+    void combination(string, string , int , vector<string>& );
+
 };
+
+vector<string> Solution::letterCombinations(string digits) {
+    vector<string> result;
+    combination("",digits,0,result);
+    return result;
+}
+
+void Solution::combination(string prefix, string digits, int offset, vector<string>& result){
+    if(offset == digits.length()){
+        if(prefix != "") result.push_back(prefix);
+        return;
+    }
+    if(digits[offset] == '0' || digits[offset] == '1') combination(prefix,digits,offset+1,result);
+    for(char a: dict[digits[offset]-'0']){
+        prefix += a;
+        combination(prefix,digits,offset+1,result);
+        prefix = prefix.substr(0,prefix.length()-1);
+    }
+}
+
 int main() {
     Solution mySolu;
-    vector<string> res1 = mySolu.letterCombinations("123");
+    vector<string> res1 = mySolu.letterCombinations("");
     for(auto s: res1) cout << s << " ";
     return 0;
 }
