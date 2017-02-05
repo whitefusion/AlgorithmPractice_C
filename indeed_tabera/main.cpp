@@ -4,6 +4,10 @@
 
 using namespace std;
 
+/**
+ * Given a string contain "ra", remove all occurence and return.
+**/
+
 int main() {
     string s;
     cin >> s;
