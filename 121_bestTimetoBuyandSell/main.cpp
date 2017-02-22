@@ -11,7 +11,7 @@ public:
         int currMin = prices[0];
         for(int i = 1; i < prices.size(); i++)
         {
-            if(currMin < prices[i])
+            if(currMin > prices[i])
                 currMin = prices[i];
             result = result > prices[i] - currMin ? result : prices[i] - currMin;
         }
